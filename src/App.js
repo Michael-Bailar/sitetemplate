@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { createGlobalStyle } from 'styled-components'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+import Hero from './components/Hero'
+import Projects from './components/Projects'
+import { projectData } from './components/projectData'
+import Feature from './components/Feature'
+// import Footer from './components/Footer'
+
+// STYLES //
+const GlobalStyle = createGlobalStyle`
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Orbitron', sans-serif;
+        max-width: 100%;
+        max-height: 100%;
+        --color-text: white;
+        --color-textSecondary: grey;
+        --color-bgColor: #00000d;
+        --color-bgColorSecondary: #10223e;
+    }
+`
+
+
+// COMPONENT //
+const App = () => {
+    return (
+        <Router>
+        <GlobalStyle />
+            <Hero />
+            <Projects heading='My Projects' data={projectData}/>
+            <Feature />
+            {/* <Footer /> */}
+        </Router>
+    )
 }
 
-export default App;
+export default App
